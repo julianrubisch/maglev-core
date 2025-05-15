@@ -22,6 +22,8 @@ module Maglev
     protected
 
     def extract_locale
+      return [default_locale, nil] if params[:path].nil?
+
       segments = params[:path].split('/')
 
       return [default_locale, params[:path]] unless locales.include?(segments[0]&.to_sym)
