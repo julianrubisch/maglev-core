@@ -45,7 +45,7 @@
         </div>
       </button>
       <div
-        class="absolute w-full z-10 -mt-1 rounded-b shadow-sm bg-gray-100"
+        class="absolute w-full z-20 -mt-1 rounded-b shadow-sm bg-gray-100"
         @keydown="naviguate"
         v-if="isOpen"
       >
@@ -57,6 +57,7 @@
             v-model="q"
             :placeholder="searchPlaceholder"
             ref="input"
+            autocomplete="off"
           />
         </div>
 
@@ -64,7 +65,7 @@
           {{ emptyLabel }}
         </div>
 
-        <div v-if="list">
+        <div v-if="list" :class="listClass">
           <div
             v-for="(item, index) in list"
             :key="item.id"
@@ -106,6 +107,7 @@ export default {
     clearEnabled: { type: Boolean, default: false },
     withLabel: { type: Boolean, default: true },
     buttonClass: { type: [Object, String], default: () => ({}) },
+    listClass: { type: [Object, String], default: () => ({}) },
   },
   data() {
     return {

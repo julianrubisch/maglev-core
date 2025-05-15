@@ -5,7 +5,7 @@ module Maglev
     include TagHelper
 
     extend Forwardable
-    def_delegators :parent, :site, :config
+    def_delegators :parent, :site, :page, :config
 
     attr_reader :parent, :id, :type, :settings, :attributes, :definition, :templates_root_path, :rendering_mode
 
@@ -97,7 +97,7 @@ module Maglev
     end
 
     def handle_error(exception)
-      throw exception if %i[live section].include?(rendering_mode) || Rails.env.test?
+      raise exception if %i[live section].include?(rendering_mode) || Rails.env.test?
 
       Rails.logger.error [
         "⚠️  [Maglev] Error when rendering a \"#{type}\" type section ⚠️",
@@ -121,6 +121,10 @@ module Maglev
           </div>
         </div>
       HTML
+    end
+
+    def inspect_fields
+      %w[id site_id type].map { |field| [field, send(field)] }
     end
   end
 end

@@ -35,19 +35,28 @@ module Maglev
       !!viewport_fixed_position?
     end
 
-    ## class methods ##
-    def self.build(hash)
-      attributes = prepare_attributes(hash)
-
-      new(
-        attributes.merge(
-          settings: ::Maglev::Section::Setting.build_many(hash['settings']),
-          blocks: ::Maglev::Section::Block.build_many(hash['blocks'])
-        )
+    def assign_attributes_from_yaml(hash)
+      attributes = prepare_default_attributes(hash).merge(
+        settings: ::Maglev::Section::Setting.build_many(hash['settings']),
+        blocks: ::Maglev::Section::Block.build_many(hash['blocks'])
       )
+
+      assign_attributes(attributes)
     end
 
-    def self.prepare_attributes(hash)
+    ## class methods ##
+
+    def self.build(hash)
+      new.tap do |section|
+        section.assign_attributes_from_yaml(hash)
+      end
+    end
+
+    ## private methods ##
+
+    private
+
+    def prepare_default_attributes(hash)
       attributes = hash.slice(*HASH_ATTRIBUTES)
 
       %w[site_scoped singleton viewport_fixed_position max_width_pane].each do |name|

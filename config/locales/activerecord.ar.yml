@@ -1,0 +1,7 @@
+ar:
+  activerecord:
+    attributes:
+      'maglev/page':
+        cloned_title: "%{title} نسخة"
+      'maglev/page/paths':
+        value: المسار

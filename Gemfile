@@ -8,13 +8,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem 'rails', '~> 8.0.0'
+gem 'rails', '~> 8.0.2'
 
 # Use Active Storage variant
 gem 'image_processing', '~> 1.12.2'
 
 # Use Propshaft to deal with assets in the dummy app
 gem 'propshaft'
+
+# Use Puma to run the web server for testing
+gem 'puma'
 
 # Temporary use this branch because it solves a bug
 # gem 'maglev-injectable', path: '../injectable'
@@ -26,6 +29,14 @@ gem 'propshaft'
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+
+# Use SQLite/PostgreSQL for development and test
+gem 'pg', '~> 1.5.9'
+gem 'sqlite3'
+
+# Gems no longer be part of the default gems from Ruby 3.5.0
+gem 'observer'
+gem 'ostruct'
 
 group :development, :test do
   gem 'bcrypt'

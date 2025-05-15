@@ -3,6 +3,7 @@
 Maglev.configure do |config|
   # Title of the Editor window
   # config.title = 'Maglev - Editor'
+  # config.title = ->(site) { "#{site.name} 👋" }
 
   # Logo of the Editor (top left corner).
   # Put your custom logo in the app/assets/images folder of your Rails application.
@@ -50,7 +51,9 @@ Maglev.configure do |config|
   config.admin_username = Rails.env.production? ? ENV.fetch('MAGLEV_ADMIN_USERNAME') : nil
   config.admin_password = Rails.env.production? ? ENV.fetch('MAGLEV_ADMIN_PASSWORD') : nil
 
-  # Uploader engine (:active_storage is only supported for now)
+  # Uploader engine (:active_storage is the default one)
+  # Checkout https://github.com/MarsBased/maglevcms-shrine for an example of a custom uploader
+  # config.uploader = 'Maglev::Shrine::Uploader'
   config.uploader = :active_storage
 
   # Collections mapping (https://docs.maglev.dev/guides/setup-collections)

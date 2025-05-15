@@ -12,9 +12,7 @@ Maglev::Engine.routes.draw do
       end
       resources :assets
       resource :publication, only: %i[show create]
-      scope 'collections/:collection_id' do
-        get '/', to: 'collection_items#index', as: :collection_items
-      end
+      resources :collection_items, path: 'collections/:collection_id', only: %i[index show]
     end
   end
 
@@ -52,6 +50,7 @@ Maglev::Engine.routes.draw do
   post 'preview/(*path)', to: 'page_preview#create', defaults: { path: 'index', rendering_mode: :editor }
 
   # Public Assets
-  get 'assets/:id(/:filename)', to: 'assets#show', as: :public_asset
+  get 'assets/:id(/:filename)', to: "#{Maglev.uploader_proxy_controller_name}#show",
+                                as: :public_asset
 end
 # rubocop:enable Metrics/BlockLength

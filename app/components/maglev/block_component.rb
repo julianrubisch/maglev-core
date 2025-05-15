@@ -5,7 +5,7 @@ module Maglev
     include TagHelper
 
     extend Forwardable
-    def_delegators :section, :site, :config
+    def_delegators :section, :site, :page, :config
 
     attr_reader :section, :id, :name, :type, :settings, :attributes, :definition
     attr_accessor :children
@@ -41,6 +41,16 @@ module Maglev
 
     def tag_data
       { maglev_block_id: id }
+    end
+
+    private
+
+    def section_id
+      section.id
+    end
+
+    def inspect_fields
+      %w[id site_id section_id name type].map { |field| [field, send(field)] }
     end
   end
 end

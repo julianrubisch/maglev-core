@@ -19,7 +19,7 @@
       "inProgress": "Saving...",
       "success": "Saved!",
       "fail": "Fail!"
-    }    
+    }
   },
   "sidebarNav": {
     "addNewSectionTooltip": "Add a new section at the bottom of the page",
@@ -116,7 +116,7 @@
       "blocks": "Blocks",
       "advanced": "Advanced"
     }
-  },  
+  },
   "themeSectionList": {
     "emptyCategory": "No sections"
   },
@@ -160,7 +160,7 @@
         "fail": "Fail!"
       }
     }
-  },  
+  },
   "iconInput": {
     "addButton": "Add icon",
     "replaceButton": "Replace icon",
@@ -236,6 +236,11 @@
       "title": "We are sorry 🙇",
       "message": "We couldn't persist your changes because someone else has updated the content in the meantime.",
       "button": "Please reload your page"
+    },
+    "forbidden": {
+      "title": "We are sorry 🙇",
+      "message": "You're not permitted to do this. Check with your administrator.",
+      "button": "Close"
     }
   },
   "support": {

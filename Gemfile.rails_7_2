@@ -22,6 +22,9 @@ gem 'rack', '~> 3.0.10'
 # REXML contains a denial of service vulnerability
 gem 'rexml', '>= 3.3.6'
 
+# Use Puma to run the web server for testing
+gem 'puma'
+
 # Temporary use this branch because it solves a bug
 # gem 'maglev-injectable', path: '../injectable'
 
@@ -32,6 +35,14 @@ gem 'rexml', '>= 3.3.6'
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+
+# Use SQLite/PostgreSQL for development and test
+gem 'pg', '~> 1.5.9'
+gem 'sqlite3'
+
+# Gems no longer be part of the default gems from Ruby 3.5.0
+gem 'observer'
+gem 'ostruct'
 
 group :development, :test do
   # Use SCSS for stylesheets

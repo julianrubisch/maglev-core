@@ -1,7 +1,7 @@
 en:
   activerecord:
     attributes:
-      'maglev/page': 
+      'maglev/page':
         cloned_title: "%{title} COPY"
       'maglev/page/paths':
         value: Path
